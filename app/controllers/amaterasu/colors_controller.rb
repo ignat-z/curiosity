@@ -1,5 +1,5 @@
 module Amaterasu
-  class LightsController < ApplicationController
+  class ColorsController < ApplicationController
     layout "amaterasu"
     def index
     end

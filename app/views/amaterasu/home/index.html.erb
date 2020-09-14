@@ -1,7 +1,14 @@
 <div class="container page">
-  <div
-    data-controller="content"
-    data-content-fetch-on-load-value="true"
-    data-content-url-value="<%= amaterasu_light_path %>"
-  />
+  <div class="mb-4 mt-2">
+    <h1 class="text-2xl font-semibold">Amaterasu Pages:</h1>
+  </div>
+
+  <ul class="list-disc leading-8 flex flex-col ml-4">
+    <li>
+      <%= link_to 'Light Control', amaterasu_lights_path,  class: 'text-xl hover:underline hover:text-green-400' %>
+    </li>
+    <li>
+      <%= link_to 'Colors Palette', amaterasu_colors_path, class: 'text-xl hover:underline hover:text-green-400' %>
+    </li>
+  </ul>
 </div>
