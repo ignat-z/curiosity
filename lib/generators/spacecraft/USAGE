@@ -1,0 +1,10 @@
+Description:
+    This generator creates isolated namespace for experiments
+
+Example:
+    rails generate spacecraft Excalibur
+
+    This will create:
+        - layout
+        - controller
+        - assets
