@@ -34,3 +34,20 @@ jobs:
             bundle-use-yarn-
       - run: yarn install
       - run: yarn prettier --write app/javascript/**/*.js
+  ruby-tests:
+    name: Run Rake tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: bundle-use-ruby-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            bundle-use-ruby-
+      - name: bundle install
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4
+      - run: bundle exec rake test
