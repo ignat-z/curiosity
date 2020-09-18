@@ -1,0 +1,22 @@
+<div
+  data-controller="progress"
+  data-progress-load-value="<%= @load %>"
+  data-progress-update-url-value="<%= amaterasu_lights_fragment_path %>"
+>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <div class="progress">
+    <div
+      class="progress-bar"
+      data-progress-target="bar"
+    >
+      <%= @load %>%
+    </div>
+  </div>
+
+  <div class="actions">
+    <button data-action="progress#off">Off</button>
+    <button data-action="progress#down">Down</button>
+    <button data-action="progress#up">Up</button>
+    <button data-action="progress#on">On</button>
+  </div>
+</div>

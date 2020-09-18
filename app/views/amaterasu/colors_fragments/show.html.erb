@@ -1,0 +1,7 @@
+<%- @colors.each do |color| %>
+  <p class="bar" style="background-color:<%= color %>;">
+    <span class="info">
+      <b>Page <%= @page %></b>: <%= color %>
+    </span>
+  </p>
+<% end %>

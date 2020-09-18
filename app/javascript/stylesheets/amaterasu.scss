@@ -1,0 +1,49 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+.page {
+  @apply mx-auto pt-5;
+}
+
+
+.light-control {
+  .progress {
+    @apply bg-gray-400 rounded;
+  }
+
+  .progress-bar {
+    @apply bg-green-300 rounded text-center py-3 transition-all duration-200;
+  }
+
+  .actions {
+    @apply flex justify-center my-4;
+  }
+
+  button {
+    @apply text-black text-2xl rounded bg-gray-300 px-4 py-2 m-2;
+  }
+}
+
+.colors {
+  .bar {
+    @apply rounded py-3 m-3 text-left border-solid border-2 border-gray-600;
+
+    .info {
+      @apply mx-4 font-medium;
+    }
+  }
+
+  .loading {
+    @apply flex justify-center;
+  }
+
+  .loading-indicator {
+    @apply inline-flex items-center p-4 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600;
+
+    .spinner {
+      @apply animate-spin -ml-1 mr-3 h-5 w-5 text-white;
+    }
+  }
+}
+
+@import "tailwindcss/utilities";
