@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   namespace :amaterasu do
     resources :home, only: :index
 
+    resources :repos, only: [:index, :show]
+
     resources :colors, only: [:index]
     resource :colors_fragment, only: [:show]
 
