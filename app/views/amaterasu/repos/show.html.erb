@@ -1,0 +1,16 @@
+<div class="relative" data-hovercard-target="card">
+  <div data-tooltip-arrow class="absolute bottom-8 left-0 z-50 bg-white shadow-lg rounded-lg p-2 min-w-max-content">
+    <div class="flex space-x-3 items-center p-1 w-auto">
+      <%= image_tag @repo.gravatar_url, class: "flex-shrink-0 h-16 w-16 object-cover bg-gray-100 rounded inset shadow-inner", alt: @repo.name %>
+      <div class="flex-1 flex flex-col">
+        <span class="font-bold text-lg"><%= @repo.name %></span>
+        <div class="flex space-x-1 items-center text-sm w-64">
+          <span class="text-gray-500 italic"><%= @repo.description %></span>
+        </div>
+        <span class="text-gray-400 text-xs mt-1">
+          Started: <%= @repo.created_at.year %>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
