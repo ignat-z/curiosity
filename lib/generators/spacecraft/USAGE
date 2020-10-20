@@ -1,5 +1,6 @@
 Description:
-    This generator creates isolated namespace for experiments
+    This generator creates isolated namespace for experiments.
+    Namespaces names: https://en.wikipedia.org/wiki/List_of_fictional_spacecraft#Interstellar
 
 Example:
     rails generate spacecraft Excalibur
