@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :arcadia do
+    resources :home, only: [:index, :create]
+
+    root to: "home#index"
+  end
+
   namespace :amaterasu do
     resources :home, only: :index
 

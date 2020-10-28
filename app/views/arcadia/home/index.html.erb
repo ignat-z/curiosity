@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>Arcadia Pages</h1>
+
+  <div class="row">
+    <div class="column column-50 column-offset-25">
+      <%= form_with(url: arcadia_home_index_path, method: :post) do %>
+        <fieldset>
+          <%= label_tag(:order_user_name, "User name:") %>
+          <%= text_field(:order, :user_name) %>
+          <%= label_tag(:order_phone_number, "Phone number:") %>
+          <%= telephone_field(:order, :phone_number) %>
+          <%= label_tag(:order_product_name, "Product name") %>
+          <%= text_field(:order, :product_name) %>
+          <%= label_tag(:order_cost, "Cost:") %>
+          <%= number_field(:order, :cost) %>
+          <%= submit_tag("Submit") %>
+        </fieldset>
+      <% end %>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="row items">
+    <%- @orders.each do |order| %>
+      <div class="column column-50">
+        <div class="order">
+          <div class="column column-10 id">
+            <div class=""><%= order.id %></div>
+          </div>
+          <div class="column column-90">
+            <div><strong><%= order.product_name %></strong>, cost: <strong><%= number_to_currency(order.cost / 100.0) %></strong></div>
+            <div>ordered by <strong>@<%= order.user_name %></strong>, <%= order.phone_number %>. </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

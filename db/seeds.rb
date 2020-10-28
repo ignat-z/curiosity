@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require "ffaker"
+require "a_r/order"
+
+20.times do
+  AR::Order.create!(
+    user_name: FFaker::Internet.user_name,
+    phone_number: FFaker::PhoneNumber.short_phone_number,
+    product_name: FFaker::Product.product_name,
+    cost: rand(1000..20000)
+  )
+end

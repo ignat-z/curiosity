@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Curiosity</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= javascript_pack_tag 'arcadia', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'arcadia', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
