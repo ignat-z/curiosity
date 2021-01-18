@@ -1,0 +1,80 @@
+<div class="py-8 flex justify-center items-center w-60">
+  <div class="bg-white px-5 py-3 w-1/2 rounded rounded-xl">
+    <div data-controller="table-scroll" data-table-scroll-nav-shown-class="flex" data-table-scroll-nav-hidden-class="hidden" data-table-scroll-button-disabled-class="text-gray-200" data-table-scroll-indicator-visible-class="bg-blue-600">
+      <div class="flex items-center justify-center space-x-2 py-3 text-gray-600" data-table-scroll-target="navBar">
+        <%= button_tag data: { table_scroll_target: "leftButton", action: "table-scroll#scrollLeft" }, class: "h-8 w-8" do %>
+          <svg viewBox="0 0 20 20" class="fill-current text-blue-600" focusable="false" aria-hidden="true">
+            <path d="M12 16a.997.997 0 0 1-.707-.293l-5-5a.999.999 0 0 1 0-1.414l5-5a.999.999 0 1 1 1.414 1.414L8.414 10l4.293 4.293A.999.999 0 0 1 12 16z"></path>
+          </svg>
+        <% end %>
+        <% 7.times do %>
+          <div class="h-3 w-3 rounded-full bg-gray-600" data-table-scroll-target="columnVisibilityIndicator"></div>
+        <% end %>
+        <%= button_tag data: { table_scroll_target: "rightButton", action: "table-scroll#scrollRight" }, class: "h-8 w-8" do %>
+          <svg viewBox="0 0 20 20" class="fill-current text-blue-600" focusable="false" aria-hidden="true">
+            <path d="M8 16a.999.999 0 0 1-.707-1.707L11.586 10 7.293 5.707a.999.999 0 1 1 1.414-1.414l5 5a.999.999 0 0 1 0 1.414l-5 5A.997.997 0 0 1 8 16z"></path>
+          </svg>
+        <% end %>
+      </div>
+
+      <div class="flex flex-col mx-auto">
+        <div class="overflow-x-auto" data-table-scroll-target="scrollArea">
+          <table class="min-w-full">
+            <thead>
+              <tr>
+                <th class="border-b-2 border-blue-600 font-medium px-8 py-4 text-left"  data-table-scroll-target="column">Product</th>
+                <th class="border-b-2 border-blue-600 font-medium px-8 py-4 text-right" data-table-scroll-target="column">Model</th>
+                <th class="border-b-2 border-blue-600 font-medium px-8 py-4 text-right" data-table-scroll-target="column">Price</th>
+                <th class="border-b-2 border-blue-600 font-medium px-8 py-4 text-right" data-table-scroll-target="column">SKU Number</th>
+                <th class="border-b-2 border-blue-600 font-medium px-8 py-4 text-right" data-table-scroll-target="column">Country</th>
+                <th class="border-b-2 border-blue-600 font-medium px-8 py-4 text-right" data-table-scroll-target="column">Sold</th>
+                <th class="border-b-2 border-blue-600 font-medium px-8 py-4 text-right" data-table-scroll-target="column">Net Sales</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y">
+              <%= tag.tr(class: "bg-gray-200") do %>
+                <td class="table-cell font-bold whitespace-no-wrap px-8 py-4 font-bold tracking-wide text-left">Totals</td>
+                <td class="table-cell font-bold whitespace-no-wrap px-8 py-4 text-right"></td>
+                <td class="table-cell font-bold whitespace-no-wrap px-8 py-4 text-right font-mono"></td>
+                <td class="table-cell font-bold whitespace-no-wrap px-8 py-4 text-right"></td>
+                <td class="table-cell font-bold whitespace-no-wrap px-8 py-4 text-right"></td>
+                <td class="table-cell font-bold whitespace-no-wrap px-8 py-4 text-right font-mono">
+                  <%= @products.sum(&:quantity) %>
+                </td>
+                <td class="table-cell font-bold whitespace-no-wrap px-8 py-4 text-right font-mono">
+                  <%= number_to_currency(@products.sum(&:net_sales) / 100.0) %>
+                </td>
+              <% end %>
+
+              <% @products.each_with_index do |p, idx| %>
+                <%= tag.tr(class: { "bg-white": idx.even?, "bg-gray-50": idx.odd? }) do %>
+                  <td class="table-cell whitespace-no-wrap px-8 py-4 font-bold tracking-wide text-left">
+                    <%= p.name %>
+                  </td>
+                  <td class="table-cell whitespace-no-wrap px-8 py-4 text-right">
+                    <%= p.model %>
+                  </td>
+                  <td class="table-cell whitespace-no-wrap px-8 py-4 text-right font-mono">
+                    <%= number_to_currency(p.price / 100.0) %>
+                  </td>
+                  <td class="table-cell whitespace-no-wrap px-8 py-4 text-right">
+                    <%= p.sku %>
+                  </td>
+                  <td class="table-cell whitespace-no-wrap px-8 py-4 text-right">
+                    <%= p.country %>
+                  </td>
+                  <td class="table-cell whitespace-no-wrap px-8 py-4 text-right font-mono">
+                    <%= p.quantity %>
+                  </td>
+                  <td class="table-cell whitespace-no-wrap px-8 py-4 text-right font-mono">
+                    <%= number_to_currency(p.net_sales / 100.0) %>
+                  </td>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
