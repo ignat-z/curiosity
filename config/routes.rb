@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
     resources :repos, only: [:index, :show]
 
+    resources :products, only: [:index]
+
     resources :colors, only: [:index]
     resource :colors_fragment, only: [:show]
 
