@@ -33,7 +33,7 @@ jobs:
           restore-keys: |
             bundle-use-yarn-
       - run: yarn install
-      - run: yarn prettier --write app/javascript/**/*.js
+      - run: yarn prettier --write app/packs/**/*.js
   ruby-tests:
     name: Run Rake tests
     runs-on: ubuntu-latest

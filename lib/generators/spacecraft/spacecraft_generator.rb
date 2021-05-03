@@ -42,11 +42,11 @@ class SpacecraftGenerator < Rails::Generators::NamedBase
   end
 
   def create_stylesheet
-    create_file "app/javascript/stylesheets/#{file_name}.scss"
+    create_file "app/packs/stylesheets/#{file_name}.scss"
   end
 
   def create_javascript
-    create_file "app/javascript/packs/#{file_name}.js", <<~FILE
+    create_file "app/packs/packs/#{file_name}.js", <<~FILE
       require("@rails/ujs").start();
       require("turbolinks").start();
       require("@rails/activestorage").start();
