@@ -5,6 +5,17 @@
   @apply mx-auto pt-5;
 }
 
+.js {
+  .js\:hidden {
+    @apply hidden;
+  }
+}
+
+.no-js {
+  .no-js\:hidden {
+    @apply hidden;
+  }
+}
 
 .light-control {
   .progress {
