@@ -1,0 +1,11 @@
+<% (@today.beginning_of_month.beginning_of_week..@today.end_of_month.end_of_week).each_slice(7) do |week| %>
+  <div class="h-8">
+    <% week.each do |day| %>
+      <span class="w-8 inline-block">
+        <% if day >= @today.beginning_of_month && day <= @today.end_of_month %>
+          <%= yield(day) %>
+        <% end %>
+      </span>
+    <% end %>
+  </div>
+<% end %>

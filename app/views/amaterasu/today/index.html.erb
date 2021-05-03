@@ -1,0 +1,10 @@
+<turbo-frame id="result">
+  <dl class="list-disc">
+    <%- @items.each do |product| %>
+    <div class="bg-gray-50 px-6 py-3 flex">
+      <dt class="w-9/12 text-sm font-medium"><%= highlight(product.name, @search) %></dt>
+      <dd class="w-3/12 text-sm text-right font-mono"><%= highlight(product.created_at.to_s, @today.to_s) %></dd>
+    </div>
+    <% end %>
+  </dl>
+</turbo-frame>

@@ -57,4 +57,54 @@
   }
 }
 
+mark {
+  @apply bg-blue-400;
+}
+
+.queue-nav--calender,
+.queue-nav--prev-month-btn,
+.queue-nav--next-month-btn,
+.queue-nav--hide-month,
+.queue-nav--queue-search,
+.queue-nav--back-btn {
+  @apply hidden;
+}
+
+.queue-nav--show-calendar {
+  .left-menu,
+  .queue-nav--icon-filler,
+  .queue-nav--today-btn,
+  .queue-nav--queue-search,
+  .queue-nav--search-btn,
+  .queue-nav--show-month {
+    @apply hidden;
+  }
+
+  .queue-nav--calender,
+  .queue-nav--prev-month-btn,
+  .queue-nav--next-month-btn {
+    @apply block;
+  }
+
+  .queue-nav--hide-month {
+    @apply inline;
+  }
+
+}
+
+.queue-nav--show-search {
+  .left-menu,
+  .queue-nav--search-btn,
+  .queue-nav--today-btn,
+  .queue-nav--toggle-month-btn,
+  .queue-nav--icon-filler {
+    @apply hidden;
+   }
+
+  .queue-nav--queue-search,
+  .queue-nav--back-btn {
+    @apply inline;
+  }
+}
+
 @import "tailwindcss/utilities";

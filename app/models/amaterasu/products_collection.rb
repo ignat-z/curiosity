@@ -1,8 +1,8 @@
 require "ffaker"
 
 module Amaterasu
-  COUNT = 15
-  Product = Class.new(Struct.new(:name, :model, :price, :sku, :quantity, :net_sales, :country))
+  COUNT = 50
+  Product = Class.new(Struct.new(:name, :model, :price, :sku, :quantity, :net_sales, :country, :created_at))
 
   class ProductsCollection
     def all
@@ -14,9 +14,14 @@ module Amaterasu
           FFaker::Code.ean,
           (50..150).to_a.sample,
           (10_000_00..20_000_00).to_a.sample,
-          FFaker::Address.country_code
+          FFaker::Address.country_code,
+          ((Date.today - 1.months)..(Date.today + 1.months)).to_a.sample
         )
       }
+    end
+
+    def cached
+      $cached ||= all
     end
   end
 end

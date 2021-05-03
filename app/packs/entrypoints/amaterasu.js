@@ -1,6 +1,5 @@
 require("@rails/ujs").start();
-require("turbolinks").start();
-
+require('@hotwired/turbo-rails');
 import "stylesheets/amaterasu";
 
 import { Application } from "stimulus";

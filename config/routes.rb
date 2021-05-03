@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
     resources :products, only: [:index]
 
+    resources :menus, only: [:index]
+    resources :today, only: [:index]
+
     resources :colors, only: [:index]
     resource :colors_fragment, only: [:show]
 
