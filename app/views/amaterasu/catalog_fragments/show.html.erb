@@ -1,0 +1,18 @@
+<%= turbo_frame_tag :feed do %>
+  <div class="flex flex-col space-y-4 w-full">
+    <% @products.each do |product| %>
+      <div class="bg-gray-50 border border-gray-300 shadow rounded-md p-4 w-2/3 mx-auto">
+        <div class="flex space-x-4 items-center">
+          <div class="rounded-full <%= color_by_name(product.name) %> h-12 w-12 flex text-2xl justify-center items-center font-semibold"><%= product.name.chars.first %></div>
+          <div class="flex-1 flex flex-col space-y-2">
+            <div class="h-4 leading-4 text-lg font-semibold"><%= product.name %></div>
+            <div class="h-3 leading-3 text-sm"><%= product.model %></div>
+          </div>
+          <div>
+            <a class="w-full flex-none bg-gray-900 hover:bg-gray-500 text-white text-lg leading-6 font-semibold py-3 px-6 border border-transparent rounded-lg focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-gray-900 focus:outline-none transition-colors duration-200" href="#">Buy</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
