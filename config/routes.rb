@@ -8,6 +8,14 @@ Rails.application.routes.draw do
   namespace :amaterasu do
     resources :home, only: :index
 
+    resources :wizzard, only: :index
+    namespace :wizzard do
+      resources :names, only: [:new, :create]
+      resources :emails, only: [:new, :create]
+      resources :passwords, only: [:new, :create]
+      resources :finish, only: [:index]
+    end
+
     resources :catalog, only: :index
     resource :catalog_fragment, only: [:show]
 

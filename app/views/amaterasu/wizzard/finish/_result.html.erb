@@ -1,0 +1,10 @@
+<% back_url = amaterasu_wizzard_index_path %>
+
+<h1 class="text-2xl my-3">Thats All</h1>
+<h1 class="text-lg"><%= session[:name] %></h1>
+<h1 class="text-lg"><%= session[:email] %></h1>
+<h1 class="text-lg"><%= session[:password] %></h1>
+
+<div class="my-3">
+<%= link_to "Back", back_url, class: 'inline-block text-md btn btn-sidebar', data: { turbo: false } %>
+</div>

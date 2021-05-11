@@ -1,0 +1,15 @@
+<div class="rounded-t-lg overflow-hidden border-t border-l border-r border-gray-400 p-10 flex justify-center">
+  <div class="max-w-md rounded-lg items-center overflow-hidden shadow-lg p-10 text-center">
+    <%= turbo_frame_tag "wizzard" do %>
+      <div class="px-6 py-4">
+        <h1 class="text-3xl font-medium">Welcome to Amaterasu!</h1>
+      </div>
+      <div class="px-6 pt-4 pb-2">
+        <p class="text-gray-700 text-xl">First we’ll set up your account</p>
+      </div>
+      <div class="px-6 pt-4 pb-2 my-3">
+        <%= link_to "Let’s get started", new_amaterasu_wizzard_name_path, class: "bg-blue-500 hover:bg-blue-700 text-xl text-white font-semibold py-3 px-5 rounded-full my-5" %>
+      </div>
+    <% end %>
+  </div>
+</div>
