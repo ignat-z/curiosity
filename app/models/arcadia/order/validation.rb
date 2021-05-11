@@ -8,7 +8,7 @@ module Arcadia
       include ActiveModel::Validations
 
       ALLOWED_FIELDS = %i[user_name phone_number product_name cost].freeze
-      DEFAULT_ATTRIBUTES = Hash[ALLOWED_FIELDS.map { |key| [key, nil] }]
+      DEFAULT_ATTRIBUTES = ALLOWED_FIELDS.map { |key| [key, nil] }.to_h
 
       with_options presence: true do
         validates :user_name
