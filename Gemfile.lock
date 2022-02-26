@@ -102,10 +102,9 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    listen (3.1.5)
+    listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-      ruby_dep (~> 1.2)
     loofah (2.14.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -115,7 +114,6 @@ GEM
     matrix (0.4.2)
     method_source (1.0.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.0)
     minitest (5.15.0)
     msgpack (1.4.5)
     net-imap (0.2.3)
@@ -134,8 +132,7 @@ GEM
       net-protocol
       timeout
     nio4r (2.5.8)
-    nokogiri (1.13.3)
-      mini_portile2 (~> 2.8.0)
+    nokogiri (1.13.3-x86_64-linux)
       racc (~> 1.4)
     parallel (1.21.0)
     parser (3.1.1.0)
@@ -204,16 +201,11 @@ GEM
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
     ruby-progressbar (1.11.0)
-    ruby_dep (1.5.0)
     rubyzip (2.3.2)
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
-    spring (2.1.1)
-    spring-watcher-listen (2.0.1)
-      listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
     sqlite3 (1.4.2)
     standard (1.7.2)
       rubocop (= 1.25.1)
@@ -221,7 +213,7 @@ GEM
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
     strscan (3.0.1)
-    tailwindcss-rails (2.0.7)
+    tailwindcss-rails (2.0.7-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.1)
     timeout (0.2.0)
@@ -248,7 +240,7 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
-  ruby
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
@@ -264,8 +256,6 @@ DEPENDENCIES
   rails (~> 7.0.2, >= 7.0.2.2)
   redis (~> 4.0)
   selenium-webdriver
-  spring
-  spring-watcher-listen (~> 2.0.0)
   sqlite3 (~> 1.4)
   standard (>= 0.8)
   stimulus-rails
@@ -275,7 +265,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 2.7.5p203
+   ruby 3.0.3p157
 
 BUNDLED WITH
-   2.1.4
+   2.2.32
