@@ -1,6 +1,6 @@
 <%- @colors.each do |color| %>
-  <p class="bar" style="background-color:<%= color %>;">
-    <span class="info">
+  <p class="rounded py-3 m-3 text-left border-solid border-2 border-gray-600" style="background-color:<%= color %>;">
+    <span class="mx-4 font-medium">
       <b>Page <%= @page %></b>: <%= color %>
     </span>
   </p>
