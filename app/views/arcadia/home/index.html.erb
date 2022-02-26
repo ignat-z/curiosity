@@ -1,38 +1,29 @@
-<div class="container">
-  <h1>Arcadia Pages</h1>
-
-  <div class="row">
-    <div class="column column-50 column-offset-25">
-      <%= form_with(url: arcadia_home_index_path, method: :post) do %>
-        <fieldset>
-          <%= label_tag(:order_user_name, "User name:") %>
-          <%= text_field(:order, :user_name) %>
-          <%= label_tag(:order_phone_number, "Phone number:") %>
-          <%= telephone_field(:order, :phone_number) %>
-          <%= label_tag(:order_product_name, "Product name") %>
-          <%= text_field(:order, :product_name) %>
-          <%= label_tag(:order_cost, "Cost:") %>
-          <%= number_field(:order, :cost) %>
-          <%= submit_tag("Submit") %>
-        </fieldset>
-      <% end %>
-    </div>
+<div class="container page">
+  <div class="mb-4 mt-2">
+    <h1 class="text-2xl font-semibold">Arcadia Pages:</h1>
   </div>
 
-  <hr/>
+  <div class="bg-gray-100 py-2 px-4 my-4">
+    <%= form_with(url: arcadia_home_index_path, method: :post) do %>
+      <fieldset>
+        <%= label_tag(:order_user_name, "User name:") %>
+        <%= text_field(:order, :user_name, class: "w-full rounded") %>
+        <%= label_tag(:order_phone_number, "Phone number:") %>
+        <%= telephone_field(:order, :phone_number, class: "w-full rounded") %>
+        <%= label_tag(:order_product_name, "Product name") %>
+        <%= text_field(:order, :product_name, class: "w-full rounded") %>
+        <%= label_tag(:order_cost, "Cost:") %>
+        <%= number_field(:order, :cost, class: "w-full rounded") %>
+        <%= submit_tag("Submit", class: "my-2 btn-primary") %>
+      </fieldset>
+    <% end %>
+  </div>
 
-  <div class="row items">
+  <div class="grid grid-cols-1 divide-y">
     <%- @orders.each do |order| %>
-      <div class="column column-50">
-        <div class="order">
-          <div class="column column-10 id">
-            <div class=""><%= order.id %></div>
-          </div>
-          <div class="column column-90">
-            <div><strong><%= order.product_name %></strong>, cost: <strong><%= number_to_currency(order.cost / 100.0) %></strong></div>
-            <div>ordered by <strong>@<%= order.user_name %></strong>, <%= order.phone_number %>. </div>
-          </div>
-        </div>
+      <div class="w-full py-2">
+        <div><small><%= order.id %></small> <strong><%= order.product_name %></strong>, cost: <strong><%= number_to_currency(order.cost / 100.0) %></strong></div>
+        <div>ordered by <strong>@<%= order.user_name %></strong>, <%= order.phone_number %>. </div>
       </div>
     <% end %>
   </div>

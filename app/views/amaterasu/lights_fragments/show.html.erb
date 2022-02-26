@@ -4,19 +4,19 @@
   data-progress-update-url-value="<%= amaterasu_lights_fragment_path %>"
 >
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <div class="progress">
+  <div class="bg-gray-400 rounded">
     <div
-      class="progress-bar"
+      class="text-white bg-blue-600 rounded text-center py-3 transition-all duration-200"
       data-progress-target="bar"
     >
       <%= @load %>%
     </div>
   </div>
 
-  <div class="actions">
-    <button data-action="progress#off">Off</button>
-    <button data-action="progress#down">Down</button>
-    <button data-action="progress#up">Up</button>
-    <button data-action="progress#on">On</button>
+  <div class="flex justify-center my-4">
+    <button class="btn-primary mx-2" data-action="progress#off">Off</button>
+    <button class="btn-primary mx-2" data-action="progress#down">Down</button>
+    <button class="btn-primary mx-2" data-action="progress#up">Up</button>
+    <button class="btn-primary mx-2" data-action="progress#on">On</button>
   </div>
 </div>
