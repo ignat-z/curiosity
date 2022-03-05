@@ -16,8 +16,9 @@ export default class extends Controller {
     this.updateBar(Math.max(this.load - 10, 0));
   }
 
-  up() {
-    this.updateBar(Math.min(this.load + 10, 100));
+  up(event) {
+    const amount = event.type === "progress:up" ? event.detail.amount : 10;
+    this.updateBar(Math.min(this.load + amount, 100));
   }
 
   on() {
