@@ -44,6 +44,7 @@ group :development, :test do
   gem "ffaker", require: false
   gem "pry"
   gem "standard", ">= 0.8", require: false
+  gem "rspec-rails", "~> 5.0.0"
 end
 
 group :development do
