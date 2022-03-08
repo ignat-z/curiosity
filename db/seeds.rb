@@ -8,12 +8,17 @@
 
 require "ffaker"
 require "a_r/order"
+require "a_r/user"
+
+user1 = AR::User.create!(email: FFaker::Internet.email)
+user2 = AR::User.create!(email: FFaker::Internet.email)
 
 20.times do
   AR::Order.create!(
     user_name: FFaker::Internet.user_name,
     phone_number: FFaker::PhoneNumber.short_phone_number,
     product_name: FFaker::Product.product_name,
-    cost: rand(1000..20000)
+    cost: rand(1000..20000),
+    user: [user1, user2].sample
   )
 end
