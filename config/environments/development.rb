@@ -1,5 +1,23 @@
 require "active_support/core_ext/integer/time"
 
+require 'statements_monitor/subscriber'
+
+module Rack
+  class SqlMonitor
+
+    def initialize(app, prefix)
+      @app = app
+      @monitor = StatementsMonitor::Subscriber.new(prefix)
+      ActiveSupport::Notifications.subscribe('sql.active_record', @monitor)
+    end
+
+    def call(env)
+      @app.call(env).tap { @monitor.validate! }
+    end
+
+  end
+end
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -64,4 +82,6 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+  
+  config.middleware.use Rack::SqlMonitor, 'users'
 end

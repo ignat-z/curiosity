@@ -1,7 +1,7 @@
 module Arcadia
   class Home < Order::Validation
     def self.index(order_class: AR::Order)
-      order_class.order(id: :desc)
+      order_class.includes(:user).order(id: :desc)
     end
 
     def self.create(attributes:, order_class: AR::Order)

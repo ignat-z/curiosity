@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema[7.0].define(version: 2022_03_08_120112) do
   create_table "orders", force: :cascade do |t|
-    t.text "user_name"
     t.text "phone_number"
     t.text "product_name"
     t.integer "cost"

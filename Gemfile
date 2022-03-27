@@ -11,6 +11,7 @@ gem "rails", "~> 7.0.2", ">= 7.0.2.2"
 gem "propshaft"
 # Use sqlite3 as the database for Active Record
 gem "sqlite3", "~> 1.4"
+gem 'mysql2', '~> 0.5.3'
 # Use Puma as the app server
 gem "puma", "~> 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
