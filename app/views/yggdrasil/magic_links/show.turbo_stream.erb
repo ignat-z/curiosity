@@ -1,0 +1,6 @@
+<% if @success %>
+  <%= turbo_stream.replace :current_user do %>
+    <%= render "yggdrasil/current_user/name" %>
+  <% end %>
+  <%= turbo_stream.delete :magin_link_awaiting %>
+<% end %>

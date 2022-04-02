@@ -1,16 +1,27 @@
 <div class="container page">
   <%= turbo_frame_tag :alerts %>
 
-  <div class="mb-4 mt-2">
-    <h1 class="text-2xl font-semibold">Yggdrasil</h1>
+    <h1 class="text-2xl font-semibold pb-4">Yggdrasil</h1>
+
+  <div class='text-lg py-2'>
+    <%= turbo_frame_tag :current_user, src: yggdrasil_current_user_index_path do %>
+      Loading...
+    <% end %>
   </div>
 
-  <%= turbo_frame_tag :current_user, src: yggdrasil_current_user_index_path do %>
-    Loading...
+  <%= turbo_frame_tag :magin_link_awaiting do %>
+    <% if session[:user].nil? %>
+      <div class="py-2">
+        <%= form_with(url: yggdrasil_magic_links_path, method: :post) do %>
+          <%= text_field_tag(:email, "", class: "focus:ring-1 focus:ring-blue-500 focus:outline-none leading-6 text-slate-900 placeholder-slate-400 rounded-md py-2 pl-4 shadow-sm", aria_label: "Your email", placeholder: "Your email...", required: true) %>
+          <%= submit_tag("Send Magic Link", class: "focus:ring-1 focus:ring-blue-500 focus:outline-none px-4 py-2 text-base leading-6 font-medium rounded-md text-white bg-indigo-600 ml-2") %>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 
-  <div class="my-3">
-    <%= link_to "Login",  yggdrasil_sessions_path, class: 'my-2 btn-primary', data: { 'turbo-method' => :post } %>
-    <%= link_to "Logout",  yggdrasil_sessions_path, class: 'my-2 btn-primary', data: { 'turbo-method' => :delete } %>
+  <div class="py-2">
+    <%= link_to "Login", yggdrasil_sessions_path, class: 'box-border text-white bg-indigo-600 mt-2 py-2 px-4 mr-2', data: { turbo_method: :post } %>
+    <%= link_to "Logout", yggdrasil_sessions_path, class: 'box-border text-white bg-indigo-600 mt-2 py-2 px-4 mr-2', data: { turbo_method: :delete } %>
   </div>
 </div>

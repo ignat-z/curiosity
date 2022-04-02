@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :yggdrasil do
     resources :home, only: :index
     resources :current_user, only: :index
+    resources :magic_links, only: [:create, :show]
     resource :sessions, only: [:create, :destroy]
 
     root to: "home#index"

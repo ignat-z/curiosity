@@ -11,7 +11,7 @@ export default class extends Controller {
 
   subscribeToChannel() {
     this.subscribeTo(this.channelValue, {
-      target: this.listenerTarget,
+      targets: this.listenerTargets,
       received: this.received
     });
   }
@@ -19,7 +19,7 @@ export default class extends Controller {
   received(data) {
     const { name, ...detail } = data;
     const event = new CustomEvent(name, { detail, bubbles: true, cancelable: true });
-    this.target.dispatchEvent(event);
+    this.targets.forEach(element => element.dispatchEvent(event));
   }
 
   async subscribeTo(channelName, mixin) {
