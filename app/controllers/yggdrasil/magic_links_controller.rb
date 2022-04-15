@@ -21,13 +21,9 @@ module Yggdrasil
     end
 
     def create
-      puts params[:email]
-      $xtoken ||= SecureRandom.hex(16)
-      token = $xtoken
-
-      Redis.current.set("magic_link", token)
-      Redis.current.expire("magic_link", 60 * 60 * 24)
-      MagicLinksMailer.notification("email@example.com", token).deliver_now
+      token = MagicCode.new(params[:email]).generate
+      Redis.current.set("magic_link", token, ex: 1.day.to_i)
+      VisitorMailer.magic_link_requested("email@example.com", token).deliver_now
 
       respond_to do |format|
         format.turbo_stream
