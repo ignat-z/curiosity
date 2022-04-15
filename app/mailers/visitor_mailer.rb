@@ -1,6 +1,8 @@
 class VisitorMailer < ApplicationMailer
   def magic_link_requested(email, token)
     @token = token
-    mail(to: email, subject: 'Magic Link to log in to Yggdrasil')
+    @email = email
+
+    mail(to: email, subject: "Magic Link to log in to Yggdrasil")
   end
 end

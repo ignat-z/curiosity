@@ -3,15 +3,19 @@ module Yggdrasil
     layout false
 
     def show
-      @success = false
+      @success = MagicCode.new(params[:email]).validate!(params[:id])
 
-      if params[:id] == Redis.current.get("magic_link")
-        @success = true
-        session[:user] = "Exisiting User"
-        ActionCable.server.broadcast(
-          "magic",
-          {name: "magic:authorized", url: request.url.to_s + "?repeat=true"}
-        ) unless params[:repeat]
+      if @success
+        session[:user] = params[:email]
+
+        if params[:repeat].nil?
+          uri = URI.parse(request.url)
+          uri.query = [uri.query, "repeat=true"].join("&")
+          ActionCable.server.broadcast(
+            "magic",
+            {name: "magic:authorized", url: uri.to_s}
+          )
+        end
       end
 
       respond_to do |format|
@@ -22,8 +26,7 @@ module Yggdrasil
 
     def create
       token = MagicCode.new(params[:email]).generate
-      Redis.current.set("magic_link", token, ex: 1.day.to_i)
-      VisitorMailer.magic_link_requested("email@example.com", token).deliver_now
+      VisitorMailer.magic_link_requested(params[:email], token).deliver_now
 
       respond_to do |format|
         format.turbo_stream
