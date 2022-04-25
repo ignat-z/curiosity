@@ -1,21 +1,22 @@
 <%= turbo_stream.replace :magin_link_awaiting do %>
-  <div
-    data-controller="cable-events"
-    data-cable-events-channel-value="ApplicationCable::MagicChannel">
-
+  <div data-controller="cable-events"
+       data-cable-events-channel-value="ApplicationCable::MagicChannel">
     <div data-controller="redirect" data-cable-events-target="listener" data-action="magic:authorized->redirect#go"></div>
 
     <div data-controller="reveal" data-reveal-show-class="block" data-reveal-hide-class="hidden">
-      <div class="block py-5" data-reveal-target="container" data-cable-events-target="listener" data-action="magic:authorized->reveal#hide">
-        <h1 class="text-xl">Waiting for magic link</h1>
-      </div>
-    </div>
-
-    <div data-controller="reveal" data-reveal-show-class="block" data-reveal-hide-class="hidden">
       <div class="hidden py-5" data-reveal-target="container" data-cable-events-target="listener" data-action="magic:authorized->reveal#show">
-        <h1 class="text-xl">Authorized</h1>
-      <div>
-    <div>
+        <h1 class="text-l">Authorized</h1>
+      </div>
 
+      <div class="block py-5" data-reveal-target="container" data-cable-events-target="listener" data-action="magic:authorized->reveal#hide">
+        <h1 class="text-l">Waiting for magic link click</h1>
+      </div>
+    <div>
   </div>
+<% end %>
+
+<%= turbo_stream.replace :alerts do %>
+  <%= turbo_frame_tag :alerts do %>
+    <%= render "yggdrasil/shared/flash", message: "Magic link has been sent.", alert_type: "alert-success" %>
+  <% end %>
 <% end %>

@@ -1,9 +1,8 @@
 module Yggdrasil
   class MagicCode
     GENERATOR = ->(_) { SecureRandom.hex(16) }
-    FAKE_GENERATOR = ->(_) { "fake_token" }
 
-    def initialize(email, redis: Redis.current, generator: FAKE_GENERATOR)
+    def initialize(email, redis: Redis.current, generator: GENERATOR)
       @email = email
       @redis = redis
       @generator = generator

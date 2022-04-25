@@ -13,7 +13,11 @@ export default class extends Controller {
   }
 
   hideToggle(bool) {
-    this.containerTarget.classList.toggle(this.showClass, !bool);
-    this.containerTarget.classList.toggle(this.hideClass, bool);
+    this.containerTargets.forEach(element => {
+      element.classList.toggle(this.showClass, !bool);
+    });
+    this.containerTargets.forEach(element => {
+      element.classList.toggle(this.showClass, bool);
+    });
   }
 }

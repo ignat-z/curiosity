@@ -1,13 +1,4 @@
 Rails.application.routes.draw do
-  namespace :yggdrasil do
-    resources :home, only: :index
-    resources :current_user, only: :index
-    resources :magic_links, only: [:create, :show]
-    resource :sessions, only: [:create, :destroy]
-
-    root to: "home#index"
-  end
-
   namespace :arcadia do
     resources :home, only: [:index, :create]
 
@@ -29,6 +20,15 @@ Rails.application.routes.draw do
 
     resources :lights, only: [:index]
     resource :lights_fragment, only: [:show, :update]
+
+    root to: "home#index"
+  end
+
+  namespace :yggdrasil do
+    resources :current_user, only: :index
+    resources :home, only: :index
+    resources :magic_links, only: [:create, :show]
+    resource :sessions, only: [:create, :destroy]
 
     root to: "home#index"
   end

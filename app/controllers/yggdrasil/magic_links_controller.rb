@@ -9,11 +9,9 @@ module Yggdrasil
         session[:user] = params[:email]
 
         if params[:repeat].nil?
-          uri = URI.parse(request.url)
-          uri.query = [uri.query, "repeat=true"].join("&")
           ActionCable.server.broadcast(
             "magic",
-            {name: "magic:authorized", url: uri.to_s}
+            {name: "magic:authorized", url: repeat_url}
           )
         end
       end
@@ -39,6 +37,14 @@ module Yggdrasil
         format.turbo_stream
         format.html { redirect_to yggdrasil_home_index_path }
       end
+    end
+
+    private
+
+    def repeat_url
+      uri = URI.parse(request.url)
+      uri.query = [uri.query, "repeat=true"].join("&")
+      uri.to_s
     end
   end
 end
