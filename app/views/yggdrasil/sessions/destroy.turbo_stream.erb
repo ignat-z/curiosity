@@ -1,0 +1,9 @@
+<%= turbo_stream.replace :current_user do %>
+  <%= render "yggdrasil/current_user/name" %>
+<% end %>
+
+<%= turbo_stream.replace :alerts do %>
+  <%= turbo_frame_tag :alerts do %>
+    <%= render "yggdrasil/shared/flash", message: "Signed out successfully.", alert_type: "alert-success" %>
+  <% end %>
+<% end %>

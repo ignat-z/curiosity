@@ -14,4 +14,12 @@
   .no-js .no-js\:hidden {
     @apply hidden;
   }
+
+  .alert {
+    @apply border px-5 py-3 border-l-4;
+  }
+
+  .alert-success {
+    @apply bg-green-200 border-green-300 text-green-900;
+  }
 }

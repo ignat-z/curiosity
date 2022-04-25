@@ -1,0 +1,3 @@
+<%= turbo_frame_tag :current_user do %>
+  Current user is <span class="text-indigo-600 dark:text-sky-400"><%= session.fetch(:user) { 'undefined' } %></span>.
+<% end %>

@@ -1,0 +1,10 @@
+<div class="<%= token_list('alert', alert_type, 'relative') %>"
+     data-controller="reveal"
+     data-reveal-target="container"
+     data-reveal-show-class="block"
+     data-reveal-hide-class="hidden">
+  <%= message %>
+  <button class="absolute top-0 right-0 float-right px-5 py-3" data-action="click->reveal#hide">
+    <span>&times;</span>
+  </button>
+</div>
