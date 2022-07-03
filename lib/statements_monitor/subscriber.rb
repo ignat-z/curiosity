@@ -5,38 +5,27 @@ require 'statements_monitor/my_sql_statement'
 
 module StatementsMonitor
   class Subscriber
+    StatementEvent = Struct.new(:statement, :backtrace)
 
     attr_reader :events
 
-    def initialize(prefix)
-      @checker = StatementsMonitor::CrossDomainStatementsChecker.new(prefix)
+    def initialize
+      @checker = StatementsMonitor::CrossDomainStatementsChecker.new
       @events = []
     end
 
     def call(_, _, _, _, values)
-      statement = MySqlStatement.new(values[:sql])
-
-      return if active_support_notification_triggered?
-      return unless statement.supported?
-
-      @events << statement
+      @events << StatementEvent.new(MySqlStatement.new(values[:sql]), caller)
     end
 
     def validate!
-      @checker.call(@events.dup)
+      return yield unless Rails.env.development?
+      
+      subscriber = ActiveSupport::Notifications.subscribe('sql.active_record', self)
+      yield.tap { @checker.call(@events.dup) }
     ensure
       @events = []
+      ActiveSupport::Notifications.unsubscribe(subscriber)
     end
-
-    private
-
-    def active_support_notification_triggered?
-      x = caller_locations
-      
-      x.any? { 
-      _1.to_s.include?('/lib/publisher') || _1.to_s.include?('models/arcadia/home.rb:4')
-      }
-    end
-
   end
 end

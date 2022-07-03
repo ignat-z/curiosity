@@ -2,7 +2,12 @@ module Arcadia
   class HomeController < ApplicationController
     layout "arcadia"
     def index
-      @orders = Home.index
+      @orders = []#Home.index
+
+      ActiveRecord::Base.transaction do 
+        o = AR::Order.first.product_name        
+        z = AR::User.create!(email: "xxx#{1}@zzz.com")
+      end
     end
 
     def create

@@ -1,0 +1,6 @@
+level: statement
+domain_tables:
+  - orders
+ignored_calls:
+  - "app/views/arcadia/home/index.html.erb:23"
+  - "app/models/arcadia/home.rb:13"

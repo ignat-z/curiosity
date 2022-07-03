@@ -5,14 +5,15 @@ require 'statements_monitor/subscriber'
 module Rack
   class SqlMonitor
 
-    def initialize(app, prefix)
+    def initialize(app)
       @app = app
-      @monitor = StatementsMonitor::Subscriber.new(prefix)
-      ActiveSupport::Notifications.subscribe('sql.active_record', @monitor)
+      @monitor = StatementsMonitor::Subscriber.new
     end
 
     def call(env)
-      @app.call(env).tap { @monitor.validate! }
+      @monitor.validate! do
+        @app.call(env)
+      end
     end
 
   end
@@ -83,5 +84,5 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
   
-  config.middleware.use Rack::SqlMonitor, 'users'
+  config.middleware.use Rack::SqlMonitor
 end
