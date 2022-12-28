@@ -2,6 +2,7 @@ module Arcadia
   class HomeController < ApplicationController
     layout "arcadia"
     def index
+      @order = AR::Order.new
       @orders = Home.index
     end
 

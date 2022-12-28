@@ -3,19 +3,32 @@
     <h1 class="text-2xl font-semibold">Arcadia Pages:</h1>
   </div>
 
-  <div class="bg-gray-100 py-2 px-4 my-4">
-    <%= form_with(url: arcadia_home_index_path, method: :post) do %>
-      <fieldset>
-        <%= label_tag(:order_user_name, "User name:") %>
-        <%= text_field(:order, :user_name, class: "w-full rounded") %>
-        <%= label_tag(:order_phone_number, "Phone number:") %>
-        <%= telephone_field(:order, :phone_number, class: "w-full rounded") %>
-        <%= label_tag(:order_product_name, "Product name") %>
-        <%= text_field(:order, :product_name, class: "w-full rounded") %>
-        <%= label_tag(:order_cost, "Cost:") %>
-        <%= number_field(:order, :cost, class: "w-full rounded") %>
-        <%= submit_tag("Submit", class: "my-2 btn-primary") %>
-      </fieldset>
+  <div class="py-2 px-4 my-4">
+    <%= form_with(
+      model: @order,
+      scope: :order,
+      url: arcadia_home_index_path,
+      builder: FormBuilders::TailwindFormBuilder,
+      method: :post,
+      class: "w-2/3 flex flex-col my-4 items-center md:items-end"
+    ) do |f| %>
+      <div class="md:flex md:w-full md:justify-between md:items-center mb-6">
+        <%= f.text_field(:user_name, class: "min-w-1/2") %>
+      </div>
+
+      <div class="md:flex md:w-full md:justify-between md:items-center mb-6">
+        <%= f.telephone_field(:phone_number, class: "min-w-1/2") %>
+      </div>
+
+      <div class="md:flex md:w-full md:justify-between md:items-center mb-6">
+        <%= f.text_field(:product_name, class: "min-w-1/2") %>
+      </div>
+
+      <div class="md:flex md:w-full md:justify-between md:items-center mb-6">
+        <%= f.number_field(:cost, class: "min-w-1/2") %>
+      </div>
+
+      <%= f.submit("Submit") %>
     <% end %>
   </div>
 
@@ -23,7 +36,7 @@
     <%- @orders.each do |order| %>
       <div class="w-full py-2">
         <div><small><%= order.id %></small> <strong><%= order.product_name %></strong>, cost: <strong><%= number_to_currency(order.cost / 100.0) %></strong></div>
-        <div>ordered by <strong>@<%= order.user_name %></strong>, <%= order.phone_number %>. </div>
+        <div>ordered by <strong>@<%= order.user_name %></strong>, <%= order.phone_number %>.</div>
       </div>
     <% end %>
   </div>
