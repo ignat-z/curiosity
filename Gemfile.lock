@@ -86,7 +86,6 @@ GEM
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     date (3.3.3)
-    debug (1.7.1)
     erubi (1.12.0)
     ffaker (2.21.0)
     ffi (1.15.5)
@@ -246,7 +245,6 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 3.33)
-  debug (>= 1.0.0)
   ffaker
   importmap-rails
   jbuilder (~> 2.7)
